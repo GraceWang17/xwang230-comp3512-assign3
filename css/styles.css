@@ -1,0 +1,61 @@
+.mdl-layout__header-row {
+  height: 100px;
+  background-color: #FFB74D;
+}
+.profile {
+   background-color: #FB8C00;
+   color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0px;
+    height: 100px;
+}
+.mdl-layout-title {
+  font-size: 50px;
+}
+
+.img {
+  width: 60px;
+  height: 60px;  
+  border-radius: 50%;
+  display: block;
+   /*-webkit-transform: rotate(90deg);*/
+}
+
+.mdl-layout-left {
+  background-color: #FFB74D;
+  height: 100%;
+
+}
+
+.material-icons {
+  color: #37474F;
+  
+}
+
+/*Modify footer*/
+.mdl-mini-footer{
+   background-color: #FFB74D;
+   display: block;
+    color: white;
+    clear: left;
+    text-align: center;
+}
+
+/* Modify the aboutus.php */
+.page-content > p > span {
+  font-weight: bold;
+}
+
+/*Modify the employee page*/
+label {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Modify the book-content.php */
+span {
+  font-weight: bold;
+}
