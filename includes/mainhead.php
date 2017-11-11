@@ -12,4 +12,4 @@
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://code.jquery.com/jquery-1.7.2.min.js" ></script>
     <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-    <!--<script src="js/login.js" type="text/JavaScript" language="javascript"></script>-->
+<!--    <script src="js/globalJS.js" type="text/JavaScript" language="javascript"></script>-->

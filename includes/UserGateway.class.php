@@ -8,7 +8,7 @@ class UserGateway extends TableDataGateway{
     }
     
     public function getSelectStatement(){
-        return 'select UserID, FirstName, LastName,Email from Users';
+        return 'select UserID, UserName, Password, Salt, State from UsersLogin';
     }
     public function getOrderFields(){
         return "LastName";
@@ -24,10 +24,18 @@ class UserGateway extends TableDataGateway{
         return 'UserID';
     }
     
-    public function getEmail($UserID){
-        return 'UserID'
+    public function getEmail($UserName){
+        return 'UserName'
     }
     
+    public function getByPass($pass){
+    return 'Password';
+    
+    
+    
+    }
+    
+ 
     
     
     

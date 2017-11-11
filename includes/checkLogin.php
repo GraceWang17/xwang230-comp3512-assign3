@@ -1,5 +1,7 @@
 <script src="js/login.js" type="text/JavaScript" language="javascript"></script>
 <?php
+         //include 'checkState.php';
+         //checkSession();
 function getLoginForm(){
     echo "<br><form action='login.php' method='post' id = 'loginForm'>
     <div class = 'userLog'>
@@ -29,8 +31,24 @@ function validationCheck(){
     $pass = $_POST['password'];
     if($userName!=null && $pass !=""){
         echo $userName, $pass;
-        
+         $db = connectDB();
+    $user = new UserGateway($db);
+    $result = $user ->findUserByEmail($userName);
+ 
+    if($result!=null){
+        if($result['password']==$pass){
+            //save session
+            session_start();
+            $_SESSION['user'] = $userName;
+            $_SESSION['pass'] = $pass;
+        }
+        }
     }
+    
+    
+    
+    
+    
 }
 ?> 
 <main class="mdl-layout__content mdl-color--grey-50">

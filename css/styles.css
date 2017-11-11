@@ -59,3 +59,35 @@ label {
 span {
   font-weight: bold;
 }
+
+/*Modify the filter bottton*/
+.button {
+    border-color: #e84c3d;
+    background-color: #e84c3d;
+    box-shadow: 2px 4px 0 0 #941f12;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    margin: 3px;
+    width: 10em;
+    height: 2em;
+}
+
+/*modify book-content*/
+/*div #book {*/
+/*    height: 100%;*/
+/*    position:relative;*/
+/*    clear: right;*/
+/*}*/
+div #imprint{
+  height: 100%;
+}
+div #subcategory {
+  height: 100%;
+  display: right;
+}
+/*div .mdl-card__supporting-text {*/
+/*  height: 100%;*/
+/*  position: relative !important;*/
+/*}*/

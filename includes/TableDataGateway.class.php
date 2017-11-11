@@ -1,22 +1,12 @@
 <?php
-//require_once('constring.php'); 
-//require_once('DatabaseHelper.class.php');
 abstract class TableDataGateway 
 {
 //Contains connection
     protected $connection;
 //Constructor is passed a database adapter
     public function __construct($connect) {
-        // if(is_null($connect)) {
-        //     throw new Exception("Connection is null");
-        // }
         $this->connection = $connect;
     }
-    // public function output() {
-    //     //print_r($connect);
-    //     print_r($connection + "2");
-    //     print_r("1");
-    // }
 // ABSTRACT METHODS
    
    /*
@@ -87,7 +77,27 @@ abstract class TableDataGateway
        return $statement->fetchAll(PDO::FETCH_ASSOC);
    }
    
+   public function findByBothCityLastName($employeeName,$city) {
+       $sql = $this->getSelectStatement() . ' where ' . $this->getLastName() . '=:LastName'. ' AND '.$this->getCityKeyName() .'=:city';
+       $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':LastName'=> $employeeName, ':city' => $city));
+       return $statement->fetchAll(PDO::FETCH_ASSOC);
+   }
+
+   //userName=email
+   public function findUserByEmail($userName){
+       
+       $sql = $this->getSelectStatement() . ' where ' . $this->getEmail() . '=:UserName';
+       $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':UserName' => $userName));
+       return $statement->fetchAll(PDO::FETCH_ASSOC);
+   }
    
+   //public function findUserPass($pass){
+       
+     //   $sql = $this->getSelectStatement() . ' where ' . $this->getEmail() . '=:Email';
+    //   $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':Email' => $userName));
+    //   return $statement->fetch(PDO::FETCH_ASSOC);
+       
+   //}
    
    
    public function findByIdFromToDo($id) {

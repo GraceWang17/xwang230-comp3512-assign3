@@ -53,5 +53,15 @@ include_once "TableDataGateway.class.php";
             from EmployeeMessages INNER JOIN Contacts ON EmployeeMessages.ContactID=Contacts.ContactID";
         }
         
+        public function getBoth(){
+            
+            
+            
+            
+            
+            
+            
+        }
+        
     }
 ?>

@@ -11,7 +11,4 @@ require_once('constring.php');
         $connection = DatabaseHelper::createConnectionInfo(DBCONNSTRING, DBUSER, DBPASS);
         return $connection;
     }
-    
-    
-    
 ?>

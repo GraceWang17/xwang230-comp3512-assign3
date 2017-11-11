@@ -11,7 +11,7 @@
         <?php include "includes/mainheader.php"; 
               include "includes/mainnav.php";
               include "includes/employees-content.php";
-              include 'includes/footer.php';
+              include "includes/footer.php";
               ?>
         </div>
     </body>
