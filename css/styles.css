@@ -75,17 +75,29 @@ span {
 }
 
 /*modify book-content*/
-/*div #book {*/
-/*    height: 100%;*/
-/*    position:relative;*/
-/*    clear: right;*/
-/*}*/
+div #book {
+    /*height: auto;*/
+    /*float: left;*/
+     
+    /*position:relative;*/
+    /*clear: right;*/
+}
+
+div #imandsub{
+  height: auto;
+  /*width: auto;*/
+}
 div #imprint{
-  height: 100%;
+  height: auto;
+  width: auto;
+  /*float: left:;*/
+  /*float: right;*/
 }
 div #subcategory {
-  height: 100%;
-  display: right;
+  height: auto;
+  width: auto;
+  /*float: left;*/
+  /*display: right;*/
 }
 /*div .mdl-card__supporting-text {*/
 /*  height: 100%;*/

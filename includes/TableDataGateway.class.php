@@ -124,7 +124,7 @@ abstract class TableDataGateway
     /**
      * Find all names from table or by condition & group all elements  + sorting by order field + limit items.
      */
-    public function findAllByLimit($name, $limit = null) {
+     public function findAllByLimit($name, $limit = null) {
         if(!is_null($name)) {
            $sql = $this->getSelectStatement(). ' where '. $this->getWhereClause() . '=:name' .' Group by '. $this->getPrimaryKeyName() .' order by ' . $this->getOrderFields();
            if(!is_null($limit)) {

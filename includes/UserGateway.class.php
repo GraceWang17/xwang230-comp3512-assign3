@@ -1,10 +1,11 @@
 <? php
 //include_once "function.inc.php";
+include_once "TableDataGateway.class.php";
 
 class UserGateway extends TableDataGateway{
     private $db;
-    public function __contruct($db){
-        parent::__contruct($db);
+    public function __construct($db){
+        parent::__construct($db);
     }
     
     public function getSelectStatement(){
@@ -14,7 +15,7 @@ class UserGateway extends TableDataGateway{
         return "LastName";
     }
     public function getPrimaryKeyName(){
-        return ;
+        return "Email";
     }
     public function getId($id){
       return 'UserID';
@@ -30,14 +31,6 @@ class UserGateway extends TableDataGateway{
     
     public function getByPass($pass){
     return 'Password';
-    
-    
-    
     }
-    
- 
-    
-    
-    
 }
 ?>

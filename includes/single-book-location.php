@@ -5,7 +5,11 @@
         $result = $university->findByBookCondition($_GET['ISBN10']);
         //var_dump($result);
         foreach ($result as $key => $value) {
-            echo '<p><span>'.$result[$key]['Name'].'</span></p>';
+            echo '<a href="browse-universities.php' . '?university=' . $result[$key]['UniversityID'] . '" class="';
+            if (isset($_GET['university']) && $_GET['university'] == $result[$key]['UniversityID']) echo 'active';
+            echo 'item">';
+            echo $result[$key]['Name']. '</a><br/>';
+            //echo '<p><span>'.$result[$key]['Name'].'</span></p>';
         }
     }
 ?>

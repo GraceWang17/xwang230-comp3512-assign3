@@ -15,7 +15,7 @@
 
             <nav class="mdl-navigation mdl-color-text--black-300">
             <a class="mdl-navigation__link mdl-color-text--black-300" href="../login.php"><i class="material-icons" role="presentation">account_box</i> Log in</a>
-            <a class="mdl-navigation__link mdl-color-text--black-300" href="includes/logout.php"><i class="material-icons" role="presentation">exit_to_app</i> Log out</a>
+            <a class="mdl-navigation__link mdl-color-text--black-300" href="../logout.php"><i class="material-icons" role="presentation">exit_to_app</i> Log out</a>
             <a class="mdl-navigation__link mdl-color-text--black-300" href="../index.php"><i class="material-icons" role="presentation">dashboard</i> Dashboard</a>
             <a class="mdl-navigation__link mdl-color-text--black-300" href="../browse-universities.php"><i class="material-icons" role="presentation">school</i> University</a>
             <a class="mdl-navigation__link mdl-color-text--black-300" href="../browse-books.php"><i class="material-icons" role="presentation">book</i> Books</a>

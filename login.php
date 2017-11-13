@@ -14,8 +14,7 @@
             ?>
         </div>
         <div>
-            <?php $getLoginForm();
-?>
+            <?php getLoginForm(); ?>
         </div>
     </body>
     

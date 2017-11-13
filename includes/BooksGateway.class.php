@@ -24,9 +24,13 @@
             return "ISBN10";
         }
         
-        // public function getWhereClause() {
-        //     return "SubcategoryName";
-        // }
+        public function getSubcategoryName() {
+            return "SubcategoryName";
+        }
+        
+        public function getImprintName() {
+            return "Imprint";
+        }
         
         public function getSubcategories() {
             return "select SubcategoryName from Subcategories order by SubcategoryName ASC";
@@ -34,6 +38,12 @@
         
         public function getImprint() {
             return "select Imprint from Imprints order by Imprint ASC";
+        }
+        
+        public function getAuthors() {
+            return "select FirstName, LastName, BookAuthors.Order, Books.ISBN10 from Authors 
+            INNER JOIN BookAuthors ON BookAuthors.AuthorId=Authors.AuthorID 
+            INNER JOIN Books ON Books.BookID=BookAuthors.BookId ";
         }
     }
 ?>

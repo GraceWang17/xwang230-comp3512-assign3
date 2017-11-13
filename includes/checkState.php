@@ -1,25 +1,16 @@
 <?php
-include 'checkLogin.php';
-
-function checkSession(){
+//include 'checkLogin.php';
 session_start();
-
-$host = "";
-$user = "";
-$pass = "";
-$state ="";
-$salt = "";
-
-if(isset($_SESSION['user'])){
-    if(isset($_SESSION['pass'])){
+if(isset($_SESSION['username'])){
+    if(isset($_SESSION['password'])){
         //go to previous page
        //header('Location: xwang230-comp3512-assign2');
        exit();
     }
 }else{
-    //header('Location:login.php');
-    getLoginForm();
+    header('Location:login.php');
+    //getLoginForm();
     exit();
 }
-}
+
 ?>

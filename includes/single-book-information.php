@@ -1,4 +1,5 @@
 <?php
+include "function.inc.php";
 /*
 Display the details for a single book specified by the INSB10 value.
 For each book, it includes following:
@@ -19,8 +20,16 @@ For each book, it includes following:
         echo "<span>ISBN10: </span>". $row['ISBN10']. "<br/>";
         echo "<span>ISBN13: </span>". $row['ISBN13']. "<br/>";
         echo "<span>Year: </span>". $row['CopyrightYear'] . "<br/>";
-        echo "<span>Subcategory Name: </span>". $row['SubcategoryName'] . "<br/>";
-        echo "<span>Imprint Name: </span>". $row['Imprint']. "<br/>";
+        //echo "<span>Subcategory Name: </span>". $row['SubcategoryName'] . "<br/>";
+        echo "<span>Subcategory Name: </span>";
+        echo '<a href="browse-books.php?subcategory=' . $row['SubcategoryName']. '" class="';
+            if (isset($_GET['subcategory']) && $_GET['subcategory'] == $row['SubcategoryName']) echo 'active';
+            echo 'item">' . $row['SubcategoryName'] . '</a><br/>';
+        //echo "<span>Imprint Name: </span>". $row['Imprint']. "<br/>";
+        echo "<span>Imprint Name: </span>";
+        echo '<a href="browse-books.php?imprint=' . $row['Imprint'] . '" class="';
+            if (isset($_GET['imprint']) && $_GET['imprint'] == $row['Imprint']) echo 'active';
+        echo 'item">' . $row['Imprint'] . '</a><br/>';
         echo "<span>Production Status: </span>". $row['Status']. "<br/>";
         echo "<span>Binding Type: </span>". $row['BindingType'] . "<br/>";
         echo "<span>Trim Size: </span>". $row['TrimSize'] . "<br/>";

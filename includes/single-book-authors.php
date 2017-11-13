@@ -1,34 +1,21 @@
 <?php
     function listAuthors() {
-        // try {
-        //     if (isset($_GET['ISBN10']) && !empty($_GET['ISBN10'])) {
-        //         $pdo =getDB();
-        //         $sql = "select FirstName, LastName, BookAuthors.Order from Authors 
-        //                 INNER JOIN BookAuthors ON BookAuthors.AuthorId=Authors.AuthorID 
-        //                 INNER JOIN Books ON Books.BookID=BookAuthors.BookId 
-        //                 where Books.ISBN10=:ISBN10 
-        //                 group by LastName order by BookAuthors.Order";
-        //         $id = $_GET['ISBN10'];
-        //         $statement = $pdo->prepare($sql);
-        //         $statement->bindValue(':ISBN10', $id);
-        //         $statement->execute();
-        //         while($row = $statement->fetch()){
-        //             outputAuthors($row);
-        //         }
-        //       $pdo = null; 
-        //     } else {
-        //         echo "No author is found.";
-        //     }
-        // } catch(PDOException $e) {
-        //     die($e->getMessage());
-        // } 
+        $db = connectDB();
+        $author = new BooksGateway($db);
+        $sql = $author->getAuthors();
+        $sql .= ' where Books.ISBN10 = "'. $_GET['ISBN10'] .'"';
+        $sql .= ' group by LastName order by BookAuthors.Order ';
+        $result = $author->getStatement($sql);
+        //var_dump($result);
+        foreach($result as $key => $value) {
+            //outputAuthors($result[$key]);
+            echo "<div><h4><span>";
+            echo $result[$key]['FirstName'] . " ". $result[$key]['LastName'];
+            echo "</h4></span></div>";
+        }
+        
     }
-function outputAuthors($row) {
-        echo "<div><h4><span>";
-        echo $row['FirstName'] . " ". $row['LastName'];
-        echo "</h4></span></div>";
-    }
-    
+
 ?>
 <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
     <div class="mdl-card__title mdl-color--pink">
