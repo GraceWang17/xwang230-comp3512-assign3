@@ -1,4 +1,4 @@
-<? php
+<?php
 //include_once "function.inc.php";
 include_once "TableDataGateway.class.php";
 
@@ -12,25 +12,29 @@ class UserGateway extends TableDataGateway{
         return 'select UserID, UserName, Password, Salt, State from UsersLogin';
     }
     public function getOrderFields(){
-        return "LastName";
+        //return "LastName";
+        return "";
     }
     public function getPrimaryKeyName(){
-        return "Email";
+        //return "Email";
+        return "";
     }
     public function getId($id){
       return 'UserID';
     }
     
-    public function getByName($UserID){
-        return 'UserID';
-    }
+    // public function getByName($UserID){
+    //     return 'UserID';
+    // }
     
-    public function getEmail($UserName){
-        return 'UserName'
+    // public function getEmail($UserName){
+    //     return 'UserName'
+    // }
+    public function getEmail(){
+        return 'UserName';
     }
-    
-    public function getByPass($pass){
-    return 'Password';
-    }
+    // public function getByPass($pass){
+    // return 'Password';
+    // }
 }
 ?>

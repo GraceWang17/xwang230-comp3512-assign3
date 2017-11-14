@@ -1,7 +1,14 @@
 <script src="js/login.js" type="text/JavaScript" language="javascript"></script>
 <?php 
 include "function.inc.php";
-
+/*
+*A session is a way to store information (in variables) to be used across multiple pages.
+*Start the section
+*/
+//session_start();
+/*
+* Create a login form
+*/
 function getLoginForm(){
     return "<br><form action='login.php' method='post' id = 'loginForm'>
     <div class = 'userLog'>
@@ -11,7 +18,7 @@ function getLoginForm(){
     <br>
     <div class='pwdLog'>
     <label> Password</label>
-    <input type='password' name='password'action='login.php' placeholder='Enter your password'>
+    <input type='password' name='password' action='login.php' placeholder='Enter your password'>
     </div>
     <br>
     <button type='submit'>Log in </button>
@@ -27,22 +34,32 @@ function getLoginForm(){
 }*/
 
 function validLogin(){
+    $db = connectDB();
+    $user = new UserGateway($db);
     $userName = $_POST['username'];
-    $pass = $_POST['password'];
+    $pass = md5($_POST['password']);
     if($userName!=null && $pass !=""){
         echo $userName, $pass;
-         $db = connectDB();
-    $user = new UserGateway($db);
-    $result = $user ->findUserByEmail($userName);
- 
-    if($result!=null){
-        if($result['password']==$pass){
-            //save session
-            $_SESSION['user'] = $userName;
-            $_SESSION['pass'] = $pass;
-            outputUserInfor($userName);
-        }
-        }
+    //      $db = connectDB();
+    // $user = new UserGateway($db);
+    $result = $user->findUserByEmail($userName);
+    var_dump($result);
+    
+    
+    
+    
+    
+    
+    // if($result!=null){
+    //     if($result['Password']==$pass){
+    //         //save session
+    //         print_r($_SESSION); 
+    //         $_SESSION['user'] = $userName;
+    //         $_SESSION['pass'] = $pass;
+            
+    //         //outputUserInfor($userName);
+    //     }
+    //     }
    /* $pdo = new PDO(DBCONNSTRING, DBUSER, DBPASS);
     $sql = "SELECT * FROM Credentials WHERE Username =:user and Password=:pass";
     $statement = $pdo->prepare($sql);
@@ -84,7 +101,7 @@ function validLogin(){
                     <h2 class="mdl-card__title-text">Log In</h2>
                 </div>
                 <?php echo getLoginForm();?>
-                <?php validLogin()?>
+                <?php validLogin(); ?>
                 <br>
                 <div id = "errors">
                 </div>

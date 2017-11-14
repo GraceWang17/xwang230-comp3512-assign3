@@ -87,19 +87,17 @@ div #imandsub{
   height: auto;
   /*width: auto;*/
 }
-div #imprint{
+div #imprint, #subcategory{
   height: auto;
   width: auto;
-  /*float: left:;*/
-  /*float: right;*/
 }
-div #subcategory {
-  height: auto;
-  width: auto;
-  /*float: left;*/
-  /*display: right;*/
-}
+
 /*div .mdl-card__supporting-text {*/
 /*  height: 100%;*/
 /*  position: relative !important;*/
 /*}*/
+
+div #author, #university {
+  height: auto;
+  width: auto;
+}

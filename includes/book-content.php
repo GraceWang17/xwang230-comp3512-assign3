@@ -1,8 +1,5 @@
 <?php
     include "function.inc.php";
-    //include 'book-subcategory.php';
-    //include 'book-imprint.php';
-    //include 'book-information.php';
 /*
  Displays the list of books which are sorted by Subcategory or Imprint from books table.
 */
