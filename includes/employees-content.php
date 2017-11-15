@@ -1,9 +1,12 @@
-<script src="js/globalJS.js" type="text/JavaScript" language="javascript"></script>
 <?php
     include "function.inc.php";
 /*
  Displays the list of employee names from Employees table
 */
+
+
+    // TODO ge the name and do db call pull the name displaying on the regular list
+    // var_dump($_POST['employeeName']);
 
     function checkForFilter() {
         if (!isset($_GET['employeeName']) && !isset($_GET['city'])) {
@@ -66,16 +69,18 @@
 <main class="mdl-layout__content mdl-color--grey-50">
     <section class="page-content">
         <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--12-col">
+           
+            <div class="mdl-cell mdl-cell--12-col" >
                 <div class = "mdl-card__title mdl-color--pink">
                     <h2 class="mdl-card__title-text">Browse Employees</h2>
                 </div>
             </div>
             
             <!-- mdl-cell + mdl-card -->
+             
             <div class="mdl-cell mdl-cell--12-col">
-                <button id="filterButton">Hide</button>
-                <form id="employeesForm" action="browse-employees.php" method="get" class="filter">
+                <button id="filterbtn" class="button">Show Filter</button>
+                <form id="employeesForm" action="browse-employees.php" method="get" class="filter hidden">
                     <!--<h3 class = "mdl-left-nav">Filter</h3>-->
                     <div class = "field">
                         <label>Employee name:</label><br>

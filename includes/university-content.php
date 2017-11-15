@@ -105,9 +105,11 @@ function outputTheAddress($row) {
                                /* Display all universities, but it displays those universities by each US State if it is not NULL */
                                 if (isset($_GET['state']) && $_GET['state'] == "0") {
                                     echo "Please select a state";
+                                } else if(isset($_GET['state']) && $_GET['state'] == null) {
+                                    echo "Please select a state";
                                 } else if(isset($_GET['state']) && $_GET['state'] != null) {
                                     echo outputUniversityByState();
-                                }else if(isset($_GET['state']) && $_GET['state'] == null){
+                                } else if(isset($_GET['state']) && $_GET['state'] == null){
                                     echo outputAllUniversities();
                                 } else {
                                     echo outputAllUniversities();

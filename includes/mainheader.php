@@ -17,15 +17,29 @@
             <label id="item3" class="material-icons mdl-badge mdl-badge--overlap" data-badge="0">favorite</label>
             <div class="mdl-tooltip" for="item3">Favorites</div>
                     
-            <label class="mdl-button mdl-js-button mdl-button--icon"
-            for="fixed-header-drawer-exp">
-            <i class="material-icons">search</i>
-            <?php include "search.php";?>
-            </label>
-            <div class="mdl-textfield__expandable-holder">
-                <input class="mdl-textfield__input" type="text" name="sample"
-                    id="fixed-header-drawer-exp">
-            </div>
+            <!--<label class="mdl-button mdl-js-button mdl-button--icon"-->
+            <!--for="fixed-header-drawer-exp">-->
+            <!--<i class="material-icons">search</i>-->
+            
+            <!--</label>-->
+            <!--<div class="mdl-textfield__expandable-holder">-->
+            <!--    <input class="mdl-textfield__input" type="text" name="sample"-->
+            <!--        id="fixed-header-drawer-exp">-->
+                
+            <!--</div>-->
+            
+            <form action="/browse-employees.php" method="post" style="display: inline-block; id="searchForm">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="typeSearch" for="search_btn" id="search_bar">
+                      <i class="material-icons" >search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                      <input class="mdl-textfield__input" type="text" id="typeSearch" name="employeeName">
+                      <label class="mdl-textfield__label" for="sample-expandable">EmployeeName Input</label>
+                      <button class="mdl-textfield__input" for="typeSearch" id="search_btn">Search</button>
+                    </div>
+                  </div>
+            </form>
         </div>
     </div>
 </header>

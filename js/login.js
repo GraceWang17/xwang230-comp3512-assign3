@@ -14,19 +14,16 @@ window.addEventListener("load", function() {
         fields[i].addEventListener("focus", setBackground);
         fields[i].addEventListener("blur", setBackground);
     }
+    document.getElementById("loginForm").addEventListener("submit", checkForEmptyFields);
 });
 
-function init(){
-    document.getElementById("loginForm").addEventListener("submit", checkForEmptyFields);
-}
-
-window.addEventListener("load", init);
+// window.addEventListener("load", init);
 
 function checkForEmptyFields(e){
     
     var errorArea = document.getElementById("errors");
     errorArea.className ="hidden";
-    var cssSelector = "form input[type=text], form input[type=password]";
+    var cssSelector = "form input[name=username], form input[name=password]";
     var fields = document.querySelectorAll(cssSelector);
     var fieldList=[];
     for(var i=0;i<fields.length;i++){

@@ -67,8 +67,8 @@ abstract class TableDataGateway
    
    public function findByLastName($employeeName) {
        //print_r($employeeName);
-       $sql = $this->getSelectStatement() . ' where ' . $this->getLastName() . '=:LastName';
-       $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':LastName' => $employeeName));
+       $sql = $this->getSelectStatement() . ' where ' . $this->getLastName() . '=:UserName';
+       $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':UserName' => $employeeName));
        return $statement->fetchAll(PDO::FETCH_ASSOC);
    }
    public function findByCity($city) {

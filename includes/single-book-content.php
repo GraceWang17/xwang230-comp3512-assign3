@@ -14,7 +14,7 @@ For each book, it includes following:
     }
     function outputDetails($row) {
         echo '<div class="item">';
-        echo $img= '<img src="book-images/medium/'.$row['ISBN10']. '.jpg" alt="book">';
+        echo $img= '<img src="book-images/medium/'.$row['ISBN10']. '.jpg" alt="book" id="bookCover">';
         echo '<h4>' . $row['Title']. '</h4><br/>';
         echo '<p>';
         echo "<span>ISBN10: </span>". $row['ISBN10']. "<br/>";
@@ -76,7 +76,9 @@ For each book, it includes following:
 ?>
 <main class="mdl-layout__content mdl-color--grey-50">
     <section class="page-content">
-        <div class="mdl-grid">
+        <img class="image-content" scr= "" id="image">
+        <div class="mdl-grid" id="modal">
+            <!--<img class="image-content" scr= "" id="image">-->
         <!-- mdl-cell + mdl-card -->
            <div class="mdl-cell mdl-cell--6-col card-lesson mdl-card  mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-color--pink">
@@ -122,3 +124,4 @@ For each book, it includes following:
         </div>
     </section>
 </main>
+<script type="text/javascript" src="../js/setstyle.js"></script>

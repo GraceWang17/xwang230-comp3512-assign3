@@ -11,10 +11,13 @@
                 include "includes/mainnav.php";
                 include "includes/checkLogin.php"; 
                 include 'includes/footer.php';
+                
+                // if(isset($_SESSION['username'])){
+                //     header("location: index.php");
+                // }
             ?>
         </div>
         <div>
-            <?php getLoginForm(); ?>
         </div>
     </body>
     
