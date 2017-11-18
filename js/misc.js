@@ -1,5 +1,4 @@
 window.onload = function(){
-    search();
     toggleFilter();
 }
 /*
@@ -18,16 +17,6 @@ function toggleFilter(){
         }
     });
 }
-//For simple Search
-function search(){
-    var btn = document.getElementById("search_btn");
-    var bar = document.getElementById("search_bar");
-    var search = document.getElementById('typeSearch')
-    search.addEventListener('keydown', function(){
-        let val = this.value
-        if(val){
-            //search thru db
-            console.log(val)
-        }
-    })
-}
+
+
+

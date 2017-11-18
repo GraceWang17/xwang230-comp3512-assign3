@@ -1,4 +1,12 @@
-<div class="mdl-grid">
+<?php
+//Display the Dashboard with 4 cards when user log in the account
+    if(isset($_SESSION[0])|| (!empty($_SESSION))){
+         echo dashboard();
+    } else {
+        echo "<h3><b>Please Login at Login page</b></h>" ;
+    }
+    function dashboard() {
+        $output = '<div class="mdl-grid">
     <!-- mdl-cell + mdl-card -->
     <!--Browse Universites-->
     <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
@@ -47,4 +55,8 @@
                 <ul class="demo-list-item mdl-list">
         </div>
     </div>
-</div>
+</div>';
+return $output;
+}
+    
+?>

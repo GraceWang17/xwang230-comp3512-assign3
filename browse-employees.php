@@ -8,8 +8,10 @@
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--fixed-header">
-        <?php include "includes/mainheader.php"; 
+        <?php session_start();
+              include "includes/mainheader.php"; 
               include "includes/mainnav.php";
+              if(isset($_SESSION))
               include "includes/employees-content.php";
               include "includes/footer.php";
               ?>

@@ -65,12 +65,6 @@ abstract class TableDataGateway
        return $statement->fetch();
    }
    
-   public function findByLastName($employeeName) {
-       //print_r($employeeName);
-       $sql = $this->getSelectStatement() . ' where ' . $this->getLastName() . '=:UserName';
-       $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':UserName' => $employeeName));
-       return $statement->fetchAll(PDO::FETCH_ASSOC);
-   }
    public function findByCity($city) {
        $sql = $this->getSelectStatement() . ' where ' . $this->getCityKeyName() .'=:city' . ' order by ' . $this->getOrderFields();
        $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':city' => $city));
@@ -78,7 +72,7 @@ abstract class TableDataGateway
    }
    
    public function findByBothCityLastName($employeeName,$city) {
-       $sql = $this->getSelectStatement() . ' where ' . $this->getLastName() . '=:LastName'. ' AND '.$this->getCityKeyName() .'=:city';
+       $sql = $this->getSelectStatement(). ' where ' . $this->getLastName() . '=:LastName'. ' AND '. $this->getCityKeyName() .'=:city';
        $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':LastName'=> $employeeName, ':city' => $city));
        return $statement->fetchAll(PDO::FETCH_ASSOC);
    }
@@ -90,14 +84,6 @@ abstract class TableDataGateway
        $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':UserName' => $userName));
        return $statement->fetchAll(PDO::FETCH_ASSOC);
    }
-   
-   //public function findUserPass($pass){
-       
-     //   $sql = $this->getSelectStatement() . ' where ' . $this->getEmail() . '=:Email';
-    //   $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':Email' => $userName));
-    //   return $statement->fetch(PDO::FETCH_ASSOC);
-       
-   //}
    
    
    public function findByIdFromToDo($id) {

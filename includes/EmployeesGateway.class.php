@@ -5,7 +5,6 @@ include_once "TableDataGateway.class.php";
     class EmployeesGateway extends TableDataGateway{
         private $db;
         public function __construct($db) {
-            //$this->db = new BaseDataGateway();
             parent::__construct($db);
         }
         
@@ -38,9 +37,6 @@ include_once "TableDataGateway.class.php";
          public function getLastName() {
             return "LastName";
         }
-        // public function getName() {
-        //     return "FirstName, LastName";
-        // }
         
         //For EmployeeToDo table
         public function getEmployeeToDo() {
@@ -52,16 +48,5 @@ include_once "TableDataGateway.class.php";
             return "select MessageID, EmployeeID, EmployeeMessages.ContactID, MessageDate, Category, Content, FirstName, LastName 
             from EmployeeMessages INNER JOIN Contacts ON EmployeeMessages.ContactID=Contacts.ContactID";
         }
-        
-        public function getBoth(){
-            
-            
-            
-            
-            
-            
-            
-        }
-        
     }
 ?>

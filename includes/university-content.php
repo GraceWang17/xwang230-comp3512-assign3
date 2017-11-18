@@ -1,7 +1,5 @@
 <?php
-    include "function.inc.php";
-    
-    /*
+/*
 This card contains a drop down list of US State names.
 */
     function outputStates() {

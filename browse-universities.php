@@ -10,19 +10,9 @@
           <?php 
           
                    include "includes/mainheader.php"; 
-              include "includes/mainnav.php";
-           
-              
-            
-                if ($_SESSION['session_user'] == null )
-                {
-                    // header("Location: login.php");
-                    exit;
-                }else{
-                       include "includes/university-content.php"; 
-                }
-             
-                include 'includes/footer.php';
+                   include "includes/mainnav.php";
+                   include "includes/university-content.php";
+                   include 'includes/footer.php';
               ?>
         </div>
     </body>

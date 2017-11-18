@@ -1,5 +1,4 @@
 <?php
-    include "function.inc.php";
 /*
  Displays the list of books which are sorted by Subcategory or Imprint from books table.
 */

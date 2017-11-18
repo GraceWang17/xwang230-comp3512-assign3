@@ -14,7 +14,9 @@
               include "includes/mainnav.php"; ?>
           <main class="mdl-layout__content">
             <div class="page-content">
-                <?php include 'includes/dashboard.php'; ?>
+                <?php 
+                include 'includes/dashboard.php';
+               ?>
             </div>
           </main>
               <?php include 'includes/footer.php';?>

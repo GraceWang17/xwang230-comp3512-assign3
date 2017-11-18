@@ -9,15 +9,12 @@ function setBackground(e) {
 window.addEventListener("load", function() {
     var cssSelector = "input[type=text], input[type=password]";
     var fields = document.querySelectorAll(cssSelector);
-    
     for (var i = 0; i<fields.length; i++) {
         fields[i].addEventListener("focus", setBackground);
         fields[i].addEventListener("blur", setBackground);
     }
     document.getElementById("loginForm").addEventListener("submit", checkForEmptyFields);
 });
-
-// window.addEventListener("load", init);
 
 function checkForEmptyFields(e){
     
@@ -28,7 +25,7 @@ function checkForEmptyFields(e){
     var fieldList=[];
     for(var i=0;i<fields.length;i++){
         if(fields[i].value == null || fields[i].value == ""){
-            e.preventDefault();
+             e.preventDefault();
             fieldList.push(fields[i]);
         }
     }
@@ -44,5 +41,4 @@ function checkForEmptyFields(e){
         errorArea.className = "visible";
     }
 }
-  
-   
+

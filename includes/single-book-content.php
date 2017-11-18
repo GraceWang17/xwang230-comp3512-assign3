@@ -1,9 +1,8 @@
 <?php 
-    include "function.inc.php";
 /*
-Display the details for a single book specified by the INSB10 value.
-For each book, it includes following:
-    ISBN10, ISBN13, Title, CopyrightYear, SubCategory, Imprint, Production Status, Binding Type, Trim Size, Page Count, and Description.
+*Display the details for a single book specified by the INSB10 value.
+*For each book, it includes following:
+*ISBN10, ISBN13, Title, CopyrightYear, SubCategory, Imprint, Production Status, Binding Type, Trim Size, Page Count, and Description.
 */
     function outputBookInformation() {
         $db = connectDB();
@@ -20,12 +19,10 @@ For each book, it includes following:
         echo "<span>ISBN10: </span>". $row['ISBN10']. "<br/>";
         echo "<span>ISBN13: </span>". $row['ISBN13']. "<br/>";
         echo "<span>Year: </span>". $row['CopyrightYear'] . "<br/>";
-        //echo "<span>Subcategory Name: </span>". $row['SubcategoryName'] . "<br/>";
         echo "<span>Subcategory Name: </span>";
         echo '<a href="browse-books.php?subcategory=' . $row['SubcategoryName']. '" class="';
             if (isset($_GET['subcategory']) && $_GET['subcategory'] == $row['SubcategoryName']) echo 'active';
             echo 'item">' . $row['SubcategoryName'] . '</a><br/>';
-        //echo "<span>Imprint Name: </span>". $row['Imprint']. "<br/>";
         echo "<span>Imprint Name: </span>";
         echo '<a href="browse-books.php?imprint=' . $row['Imprint'] . '" class="';
             if (isset($_GET['imprint']) && $_GET['imprint'] == $row['Imprint']) echo 'active';
@@ -47,14 +44,11 @@ For each book, it includes following:
         $sql .= ' where Books.ISBN10 = "'. $_GET['ISBN10'] .'"';
         $sql .= ' group by LastName order by BookAuthors.Order ';
         $result = $author->getStatement($sql);
-        //var_dump($result);
         foreach($result as $key => $value) {
-            //outputAuthors($result[$key]);
             echo "<div><h4><span>";
             echo $result[$key]['FirstName'] . " ". $result[$key]['LastName'];
             echo "</h4></span></div>";
         }
-        
     }
 /*
 * Display a list of universities that have adopted the book
@@ -64,19 +58,17 @@ For each book, it includes following:
         $db = connectDB();
         $university = new UniversityGateway($db);
         $result = $university->findByBookCondition($_GET['ISBN10']);
-        //var_dump($result);
         foreach ($result as $key => $value) {
             echo '<a href="browse-universities.php' . '?university=' . $result[$key]['UniversityID'] . '" class="';
             if (isset($_GET['university']) && $_GET['university'] == $result[$key]['UniversityID']) echo 'active';
             echo 'item">';
             echo $result[$key]['Name']. '</a><br/>';
-            //echo '<p><span>'.$result[$key]['Name'].'</span></p>';
         }
     }
 ?>
 <main class="mdl-layout__content mdl-color--grey-50">
     <section class="page-content">
-        <img class="image-content" scr= "" id="image">
+        <img class="image-content" scr= "../book-images/large/" id="image">
         <div class="mdl-grid" id="modal">
             <!--<img class="image-content" scr= "" id="image">-->
         <!-- mdl-cell + mdl-card -->

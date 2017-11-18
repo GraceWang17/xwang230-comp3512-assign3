@@ -1,5 +1,4 @@
 <?php
-//include_once "function.inc.php";
 include_once "TableDataGateway.class.php";
 
 class UserGateway extends TableDataGateway implements Serializable{
@@ -9,7 +8,9 @@ class UserGateway extends TableDataGateway implements Serializable{
     }
     
     public function getSelectStatement(){
-        return 'SELECT UsersLogin.UserID, UsersLogin.UserName, UsersLogin.Password, UsersLogin.Salt, UsersLogin.State,Users.FirstName, Users.LastName from UsersLogin 
+        return 'SELECT UsersLogin.UserID, UsersLogin.UserName, UsersLogin.Password, UsersLogin.Salt, UsersLogin.State,
+                Users.FirstName, Users.LastName, Users.Address, Users.City,Users.Region,Users.Country,Users.Postal,Users.Phone 
+                FROM UsersLogin 
                 INNER JOIN Users ON Users.Email = UsersLogin.UserName';
     }
     
@@ -26,10 +27,7 @@ class UserGateway extends TableDataGateway implements Serializable{
     public function getEmail(){
         return 'UserName';
     }
-    
-    /*public function getProfile(){
-        return serialize();
-    }*/
+
     function serialize(){
         return serialize(array("ID"=>$this->UserID,
                                "username"=>$this->UserName,

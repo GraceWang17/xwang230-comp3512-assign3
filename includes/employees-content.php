@@ -1,55 +1,97 @@
 <?php
-    include "function.inc.php";
 /*
- Displays the list of employee names from Employees table
+get the name and do db call pull the name displaying on the regular list
 */
-
-
-    // TODO ge the name and do db call pull the name displaying on the regular list
-    // var_dump($_POST['employeeName']);
-
+    function checkSearch(){
+            $db = connectDB();
+            $employee = new EmployeesGateway($db);
+            $sql = $employee->getSelectStatement();
+            $sql .= ' where LastName LIKE "' . $_POST['seachLastName'] . '%" Order by LastName';
+            $result = $employee->getStatement($sql);
+            if ($result == null) {
+                echo "No Employee";
+            } else {
+                //var_dump($result);
+                foreach($result as $key => $value) {
+                    echo '<a href="' . $SERVER["SCRIPT_NAME"] . '?employeeName=' . $result[$key]['LastName']. '&city=' . $result[$key]['City'] .'&employee=' . $result[$key]['EmployeeID']. '" class="';
+                    echo 'item">';
+                    echo $result[$key]['FirstName'] . " " . $result[$key]["LastName"] . '</a><br/>';
+                }
+            }
+    }
+    
+/*
+Chceck if there is any filter and call the function that can print the employee
+*/
     function checkForFilter() {
         if (!isset($_GET['employeeName']) && !isset($_GET['city'])) {
+            //outputEmployeesByFilter(null, null);
+            if($_POST['seachLastName']!=null){
+            //check entered text 
+                checkSearch();
+            }else{
             //Output all Employees
             outputEmployeesByFilter(null, null);
-        } else if (isset($_GET['employeeName']) && empty($_GET['employeeName']) && isset($_GET['city']) && !empty($_GET['city'])) {
-            //Output employees by city name
-            outputEmployeesByFilter(null, $_GET['city']);
-        } else if (isset($_GET['employeeName']) && !empty($_GET['employeeName']) && isset($_GET['city']) && empty($_GET['city'])) {
-            //Output employees by lastname
-            outputEmployeesByFilter($_GET['employeeName'], null);
-        } else if (isset($_GET['employeeName']) && !empty($_GET['employeeName']) && isset($_GET['city']) && !empty($_GET['city'])) {
-            //Output the employee by both filters
-            outputEmployeesByFilter($_GET['employeeName'], $_GET['city']);
+            }
+        } else if (!isset($_GET['employeeName']) && isset($_GET['city'])) {
+            echo "Reset employeeName";
+        } else if (isset($_GET['employeeName']) && !isset($_GET['city'])) {
+           echo "Reset city";
         } else {
-            echo "Please enter the employee name or select by city";
+            //isset($_GET['employeeName']) && isset($_GET['city'])
+            if (empty($_GET['employeeName']) && !empty($_GET['city'])) {
+                //Output employees by city name
+                outputEmployeesByFilter(null, $_GET['city']);
+            } else if (empty($_GET['employeeName']) && $_GET['city'] == 0) {
+                //Output all employees
+                outputEmployeesByFilter(null, null);
+            }  else if (!empty($_GET['employeeName']) && empty($_GET['city'])) {
+                //Output employees by lastname
+                outputEmployeesByFilter($_GET['employeeName'], null);
+                
+            } else if (!empty($_GET['employeeName']) && $_GET['city'] == 0) {
+                //Output employees by lastname
+                outputEmployeesByFilter($_GET['employeeName'], null);
+            } else if (!empty($_GET['employeeName']) && !empty($_GET['city'])) {
+                //Output the employee by both filters
+                outputEmployeesByFilter($_GET['employeeName'], $_GET['city']);
+            } else {
+                echo "Please enter the employee name or select by city";
+            }
         }
         
     }
-
+/*
+ Displays the list of employee names from Employees table
+*/
     function outputEmployeesByFilter($employeeName, $city) {
         $result = null;
-        $both=null;
+        // $both=null;
         $db = connectDB();
         $employee = new EmployeesGateway($db);
-        if (isset($employeeName) && $city == null) {
-            $result = $employee->findByLastName($employeeName);
-        } elseif ($employeeName == null && isset($city)) {
+        //$sql = $employee->getSelectStatement();
+        
+        if ($employeeName != null && $city == null) {
+            $sql = $employee->getSelectStatement();
+            $sql .= ' where LastName LIKE "' . $_GET['employeeName'] . '%" Order by LastName';
+            $result = $employee->getStatement($sql);
+        } elseif ($employeeName == null && $city != null) {
             $result = $employee->findByCity($city);
-        } elseif (!empty($employeeName) && !empty($city)) {
+        } elseif ($employeeName != null && $city != null) {
             $result = $employee->findByBothCityLastName($employeeName, $city);
         } else {
             $result = $employee->findAllSorted("LastName");
         }
         foreach($result as $key =>$value) {
-            // echo '<a href="' . $SERVER["SCRIPT_NAME"] . '?employeeName=' . $result[$key]['FirstName'].$result[$key]['LastName']. '&city=' . $result[$key]['City'] . '" class="';
-            echo '<a href="' . $SERVER["SCRIPT_NAME"] . '?employee=' . $result[$key]['EmployeeID']. '" class="';
-                if (isset($_GET['employee']) && $_GET['employee'] == $result[$key]['EmployeeID']) echo 'active';
-                echo 'item">';
-                echo $result[$key]['FirstName'] . " " . $result[$key]["LastName"] . '</a><br/>';
+            echo '<a href="' . $SERVER["SCRIPT_NAME"] . '?employeeName=' . $result[$key]['LastName']. '&city=' . $result[$key]['City'] .'&employee=' . $result[$key]['EmployeeID']. '" class="';
+            if (isset($_GET['employee']) && $_GET['employee'] == $result[$key]['EmployeeID']) echo 'active';
+            echo 'item">';
+            echo $result[$key]['FirstName'] . " " . $result[$key]["LastName"] . '</a><br/>';
         }
     }
-    //Display all cities in the Employees table
+/*
+Display all cities in the Employees table
+*/
     function outputCityDropdown() {
         $db = connectDB();
         $employee = new EmployeesGateway($db);
@@ -66,6 +108,7 @@
         
     }
 ?>
+
 <main class="mdl-layout__content mdl-color--grey-50">
     <section class="page-content">
         <div class="mdl-grid">
@@ -77,24 +120,25 @@
             </div>
             
             <!-- mdl-cell + mdl-card -->
-             
             <div class="mdl-cell mdl-cell--12-col">
                 <button id="filterbtn" class="button">Show Filter</button>
                 <form id="employeesForm" action="browse-employees.php" method="get" class="filter hidden">
                     <!--<h3 class = "mdl-left-nav">Filter</h3>-->
-                    <div class = "field">
+                    <div class = "field"><br>
                         <label>Employee name:</label><br>
                         <input name = "employeeName" type="text" placeholder = "Enter last name"><br>
-                    </div>
+                    </div><br>
                     <div class = "field">
                         <label>City:</label><br>
                         <select name = "city">
                         <option value = "0">Select city</option>
                         <?php  outputCityDropdown();?>
-                        </select><br>
+                        </select><br><br>
                     </div>
-                    <input class="field" type="submit" value="Filter" id="Hide">
+                    <input class="field" type="submit" value="Submit Filter" id="Hide">
                         <!--<input class="button" type="submit" value="Filter">-->
+                      
+                    <!--<button type = "submit" id="FilterClear" onclick = "window.location.href ='browse-employees.php'">Clear Filter</button>-->
                 </form>
                 <!--<input class="button" type="submit" value="Hide Filter" id="Hide">-->
             </div>
@@ -109,13 +153,12 @@
                                /* programmatically loop though employees and display each
                                   name as <a> element. */
                                   checkForFilter();
+                                  
                         ?> 
                     </ul>
                 </div>
             </div>
         <!-- mdl-cell + mdl-card -->
-         <?php //include 'employees-details.php';
-         ?>
          <!--Display each employee's detail information-->
             <!--Such as Address, Todo something and Messages-->
             

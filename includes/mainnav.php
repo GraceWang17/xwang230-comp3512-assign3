@@ -18,25 +18,35 @@
                 echo "<span>".$email . "</span>";
             }
         echo '</div>';
-    }
+     }
     
     function generatedLeftMenu(){
         profile();
-        $analytics_link = $emps_link = $book_link = $university_link = $index_link = "../login.php";
-        
-        if($_SESSION['session_user'] != null){
+        $profile_link=$aboutus_link=$logout_link= $analytics_link = $emps_link = $book_link = $university_link = $index_link = "../login.php";
+        $index_link .="?pre=index";
+            $university_link.="?pre=browse-universities";
+            $emps_link .="?pre=browse-employees";
+            $book_link.="?pre=browse-books";
+            $analytics_link .="?pre=analytics";
+            $aboutus_link.="?pre=aboutus";
+            $profile_link.="?pre=profile";
+        if(isset($_SESSION['session_user'])){
              $index_link = "../index.php";
              $university_link = "../browse-universities.php";
-              $emps_link = "../browse-employees.php";
+             $emps_link = "../browse-employees.php";
              $book_link = "../browse-books.php";
              $analytics_link = "../analytics.php";
              $aboutus_link="../aboutus.php";
+             $logout_link = "../logout.php";
+             $profile_link = "../profile.php";
+             
         }
         $output = '
             <nav class="mdl-navigation mdl-color-text--black-300">
             <a class="mdl-navigation__link mdl-color-text--black-300" href="../login.php"><i class="material-icons" role="presentation">account_box</i> Log in</a>
-            <a class="mdl-navigation__link mdl-color-text--black-300" href="../logout.php"><i class="material-icons" role="presentation">exit_to_app</i> Log out</a>
-            <a class="mdl-navigation__link mdl-color-text--black-300" href="../' . $index_link . '"><i class="material-icons" role="presentation">dashboard</i> Dashboard</a>
+            <a class="mdl-navigation__link mdl-color-text--black-300" href="' . $profile_link . '"><i class="material-icons" role="presentation">perm_identity</i>View Profile</a>
+            <a class="mdl-navigation__link mdl-color-text--black-300" href="' . $logout_link. '"><i class="material-icons" role="presentation">exit_to_app</i> Log out</a>
+            <a class="mdl-navigation__link mdl-color-text--black-300" href="' . $index_link . '"><i class="material-icons" role="presentation">dashboard</i> Dashboard</a>
             <a class="mdl-navigation__link mdl-color-text--black-300" href="' . $university_link . '"><i class="material-icons" role="presentation">school</i> University</a>
             <a class="mdl-navigation__link mdl-color-text--black-300" href="' . $book_link . '"><i class="material-icons" role="presentation">book</i> Books</a>
             <a class="mdl-navigation__link mdl-color-text--black-300" href="' . $emps_link . '"><i class="material-icons" role="presentation">contacts</i> Employees</a>

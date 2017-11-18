@@ -94,7 +94,7 @@ div #author, #university {
 #image{
     position: absolute;
     z-index: 100;
-    margin: 0 auto; 
+    margin: 10% auto; 
     left: 24%;
     width: 40%;
     /*height: 100%;*/
