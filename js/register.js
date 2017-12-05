@@ -63,14 +63,16 @@ function checkEmailPattern(e){
    /* var errorArea = document.getElementById("errors");
     errorArea.className ="hidden";*/
      var email = $('.email').val();
-     //alert(email);
+     alert(email);
     if (email != null && email !=""){
         alert(email);
-        var pattern= "r";
+        var pattern= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if(!email.match(pattern)){
-             email.style.borderColor = "red";
-			 email.style.backgroundColor = "pink";
-			 //se.preventDefault();
+             //e.preventDefault();
+             alert(email);
+             e.preventDefault();
+             $('.email').style.borderColor = "red";
+			 $('.email').style.backgroundColor = "pink";
 			 alert("error");
 			 /*errorArea.innerHTML ="<p><b>Your Email is not valid</b></p>";
              errorArea.className = "visible";*/
