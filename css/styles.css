@@ -104,3 +104,50 @@ div #author, #university {
   background-color: black;
   opacity: 0.5;
 }
+
+/*Modify analytics.php*/
+div #totalNum {
+  display: -webkit-inline-box;
+}
+
+div #numBox {
+      display: flex;
+}
+#selectCountry {
+  display: -webkit-inline-box;
+  /*background-color:lightblue;*/
+  width:auto;
+}
+
+#countiresForm {
+  display: initial;
+
+  /*width:auto;*/
+  /*height:auto;*/
+}
+
+#showBox {
+  display: table-cell;
+  width: 300px !important;
+  /*text-align: center;*/
+  font-style: italic;
+}
+.material-icons.blue { color: lightblue; }
+
+#everyBook th, td {
+  text-align: left !important;
+}
+
+#booksTable {
+  width: 100%;
+}
+
+#innerTable {
+  width: 97%
+}
+
+#totalNumCard{
+  width: 23%;
+  height: auto;
+  text-align: center !important;
+}

@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(isset($_SESSION['session_user'])){
+    if($_GET['location']==''){
+        header("location:index.php");
+    }else{
+        header("location:" .$_GET['location'].".php");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

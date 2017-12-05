@@ -82,11 +82,16 @@ Chceck if there is any filter and call the function that can print the employee
         } else {
             $result = $employee->findAllSorted("LastName");
         }
+        //var_dump($result);
+        if ($result == null) {
+            echo "Not found by filter, please enter again";
+        } else {
         foreach($result as $key =>$value) {
             echo '<a href="' . $SERVER["SCRIPT_NAME"] . '?employeeName=' . $result[$key]['LastName']. '&city=' . $result[$key]['City'] .'&employee=' . $result[$key]['EmployeeID']. '" class="';
             if (isset($_GET['employee']) && $_GET['employee'] == $result[$key]['EmployeeID']) echo 'active';
             echo 'item">';
             echo $result[$key]['FirstName'] . " " . $result[$key]["LastName"] . '</a><br/>';
+        }
         }
     }
 /*

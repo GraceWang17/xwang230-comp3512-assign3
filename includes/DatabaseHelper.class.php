@@ -4,7 +4,6 @@ class DatabaseHelper {
     public static function createConnectionInfo($connString, $user, $password) {
         $pdo = new PDO($connString, $user, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        //print_r($pdo);
         return $pdo;
     }
     
@@ -32,6 +31,23 @@ class DatabaseHelper {
         }
         
         return $statement;
+    }
+    
+    public static function insert($connection, $sql, $parameters = array()){
+         if (!is_array($parameters)) {
+            $parameters = array($parameters);
+        }
+        
+        if (count($parameters) > 0) {
+            //Use a prepared statement if parameters
+            $statement = $connection ->prepare($sql);
+            $executedOk = $statement ->execute($parameters);
+        } else {
+            throw new PDOException;
+        }
+        
+        if($executedOk) return $connection->lastInsertId();
+        else return null;
     }
 }
 ?>

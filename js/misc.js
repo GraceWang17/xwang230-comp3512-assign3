@@ -8,15 +8,15 @@ window.onload = function(){
 function toggleFilter(){
     var filter = document.getElementById("employeesForm");
     var filterButton = document.getElementById('filterbtn');
-    filterButton.addEventListener('click', function(e){
-        filter.classList.toggle('hidden');
-        if (filterButton.innerHTML == "Show Filter") {
-            filterButton.innerHTML = "Hide Filter";
-        } else {
-            filterButton.innerHTML = "Show Filter";
-        }
-    });
+    if(filterButton){
+        filterButton.addEventListener('click', function(e){
+            filter.classList.toggle('hidden');
+            if (filterButton.innerHTML == "Show Filter") {
+                filterButton.innerHTML = "Hide Filter";
+            } else {
+                filterButton.innerHTML = "Show Filter";
+            }
+        });
+    }
 }
-
-
 

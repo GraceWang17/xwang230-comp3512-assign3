@@ -55,6 +55,18 @@
                 <ul class="demo-list-item mdl-list">
         </div>
     </div>
+        <!--Analysis--> 
+    <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
+         <div class="mdl-card__title mdl-color--purple">
+            <h2 class="mdl-card__title-text">
+                <a href="analytics.php"><img src="dashboard-images/analysis.png" /></a>
+            </h2>
+        </div>
+        <div class="mdl-card__supporting-text"> 
+            <a href="aboutus.php"><h5>Analysis</h5></a>
+                <ul class="demo-list-item mdl-list">
+        </div>
+    </div>
 </div>';
 return $output;
 }

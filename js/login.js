@@ -1,3 +1,4 @@
+
 function setBackground(e) {
     if (e.type == "focus") {
         e.target.style.backgroundColor = "#FFE393";
@@ -14,6 +15,8 @@ window.addEventListener("load", function() {
         fields[i].addEventListener("blur", setBackground);
     }
     document.getElementById("loginForm").addEventListener("submit", checkForEmptyFields);
+    /*document.getElementById("loginbutton").addEventListener("click", checkForEmptyFields);*/
+    
 });
 
 function checkForEmptyFields(e){
@@ -39,6 +42,7 @@ function checkForEmptyFields(e){
         }
         errorArea.innerHTML ="<p><b>"+msg+"</b></p>";
         errorArea.className = "visible";
+    
     }
 }
 

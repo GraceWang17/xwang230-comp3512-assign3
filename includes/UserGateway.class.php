@@ -3,6 +3,8 @@ include_once "TableDataGateway.class.php";
 
 class UserGateway extends TableDataGateway implements Serializable{
     private $db;
+    protected $insertSql;
+    protected $insertParams;
     public function __construct($db){
         parent::__construct($db);
     }
@@ -13,6 +15,33 @@ class UserGateway extends TableDataGateway implements Serializable{
                 FROM UsersLogin 
                 INNER JOIN Users ON Users.Email = UsersLogin.UserName';
     }
+  /*****************************/
+ /*generic function for insert*/
+/*****************************/
+    public function setInsert($tableName, $fields = array()){
+        $sql_1 = "insert into $tableName (";
+        $sql_2 =  "values (";
+        $params = array();
+        foreach($fields as $k => $v){
+            $params[':' . $k] = $v; 
+            $sql_1 .= ($k . ', ');
+            $sql_2 .= (':' . $k . ', '); 
+        }
+        $this->insertSql = substr($sql_1, 0, -2) . ') ' . substr($sql_2, 0, -2). ');';
+        if(isset($this->insertSql)) $this->insertParams = $params;
+    }
+
+    protected function getInsert(){
+        if(!isset($this->insertSql)) throw new PDOException;
+        return $this->insertSql;
+    }
+    protected function getInsertParams(){
+        return $this->insertParams;
+    }
+    
+  /*****************************/
+ /*************end*************/
+/*****************************/
     
     public function getOrderFields(){
         return "";

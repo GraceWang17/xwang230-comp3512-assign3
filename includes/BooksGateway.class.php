@@ -2,8 +2,8 @@
     include_once "TableDataGateway.class.php";
     class BooksGateway extends TableDataGateway {
         private $db;
-        public function __constract($db) {
-            parent::__constract($db);
+        public function __construct($db) {
+            parent::__construct($db);
         }
         
         public function getSelectStatement() {
@@ -44,6 +44,21 @@
             return "select FirstName, LastName, BookAuthors.Order, Books.ISBN10 from Authors 
             INNER JOIN BookAuthors ON BookAuthors.AuthorId=Authors.AuthorID 
             INNER JOIN Books ON Books.BookID=BookAuthors.BookId ";
+        }
+        
+        //For Adopted Books in assignment3
+        public function getAdoptedBooks() {
+            return "select count(AdoptionDetailID) as total, AdoptionBooks.BookID, sum(Quantity) as sumQ, Title, ISBN10 from AdoptionBooks 
+            INNER JOIN Books ON Books.BookID=AdoptionBooks.BookID 
+            group by BookID order by total DESC limit 10";
+        }
+        
+        protected function getInsert(){
+             return;
+        }
+   
+        protected function getInsertParams(){
+             return;
         }
     }
 ?>

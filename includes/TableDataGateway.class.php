@@ -24,6 +24,10 @@ abstract class TableDataGateway
    */    
    abstract protected function getPrimaryKeyName();
    
+   abstract protected function getInsert();
+   
+   abstract protected function getInsertParams();
+   
 //Public functions --- return either a single or array of the appropriate Domain Object subclasses
     /*
       Returns all the records in the table
@@ -142,6 +146,12 @@ abstract class TableDataGateway
     public function closeConnection()
     {
         $this->connection=null;
+    }
+    
+    public function insert(){
+        $sql = $this->getInsert();
+        $params = $this->getInsertParams();
+        return DatabaseHelper::insert($this->connection, $sql, $params);
     }
 }
 ?>

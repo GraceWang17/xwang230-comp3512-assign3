@@ -1,5 +1,4 @@
 <!--Display the bookstore main website page-->
-
 <!DOCTYPE html>
 <html lang="en">
     <head>

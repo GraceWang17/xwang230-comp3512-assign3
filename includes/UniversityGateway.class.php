@@ -2,8 +2,8 @@
 include_once "TableDataGateway.class.php";
     class UniversityGateway extends TableDataGateway {
         private $db;
-        public function __constract($db) {
-            parent::__constract($db);
+        public function __construct($db) {
+            parent::__construct($db);
         }
         
         public function getSelectStatement() {
@@ -37,5 +37,13 @@ include_once "TableDataGateway.class.php";
         public function getBookISBN() {
             return "ISBN10";
         }
+        
+         protected function getInsert(){
+            return;
+         }
+   
+         protected function getInsertParams(){
+             return;
+         }
     }
 ?>

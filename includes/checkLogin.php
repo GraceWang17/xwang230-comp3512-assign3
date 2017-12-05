@@ -2,21 +2,22 @@
 <?php 
 /*
 * Create a login form
-*/
+*/ 
 function getLoginForm(){
-    return "<br><form action='login.php' method='post' id = 'loginForm'>
+    return "<br><form method='post' id = 'loginForm'>
     <div class = 'userLog'>
     <label>Username</label>
-    <input type = 'text' name='username' action='login.php' placeholder='Enter your username'>
+    <input type = 'text' name='username' >
     </div>
     <br>
     <div class='pwdLog'>
     <label> Password</label>
-    <input type='password' name='password' action='login.php' placeholder='Enter your password'>
+    <input type='password' name='password'>
     </div>
     <br>
-    <button type='submit' form='loginForm'>Log in </button>
-    </form>";
+    <button type='submit' form='loginForm' id='loginbutton'>Log in </button>
+    </form><br>
+    <form action='register.php'><button>Register</button></form>";
 }
 /*
 check entered information is valid or not
@@ -36,27 +37,24 @@ function validLogin(){
                  $_SESSION['user_id'] = $result[0]['UserID'];
                  $_SESSION['email'] = $result[0]['UserName'];
                  $_SESSION['first'] = $result[0]['FirstName'];
+                 $_SESSION['last'] = $result[0]['LastName'];
                  $_SESSION['add'] = $result[0]['Address'];
                  $_SESSION['city'] = $result[0]['City'];
                  $_SESSION['country'] = $result[0]['Country'];
                  $_SESSION['post'] = $result[0]['Postal'];
                  $_SESSION['phone'] = $result[0]['Phone'];
-                 //var_dump($_SESSION);
-                 echo "<b>Log in Succeful.</b>";
-                 checkIndrection();
+                 echo "<p id='logIn' ><b>Log in Succeful.</b></p>";
+                 echo "<meta http-equiv='refresh' content='0'>";
+            } else {
+                echo "The password is incorrect, please enter your password again";
             }
+        } else {
+            echo "The username or password can not found, please enter again";
         }
         
     }
 }
 
-function checkIndrection(){
-    echo"111";
-     if(isset($_GET['pre']) && $_GET['pre']!=null){
-         echo "222";
-         header('location:' .$SERVER["SCRIPT_NAME"].'../'. $_GET['pre'] . '.php');
-}
-}
 ?> 
 <main class="mdl-layout__content mdl-color--grey-50">
     <section class="page-content">

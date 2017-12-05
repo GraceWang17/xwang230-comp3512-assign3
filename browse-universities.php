@@ -3,6 +3,12 @@
 <html lang="en">
     <head>
          <?php include "includes/mainhead.php"; ?>
+         <style>
+           #map {
+            height: 400px;
+            width: 100%;
+           }
+        </style>
     </head>
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
@@ -15,5 +21,7 @@
                    include 'includes/footer.php';
               ?>
         </div>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key= AIzaSyALZipn-KhyuzWeSrCI0sQjoeqLWGDGZ3M&callback=initMap" type="text/javascript"></script>
+
     </body>
 </html>

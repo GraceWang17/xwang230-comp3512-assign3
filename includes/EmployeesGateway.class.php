@@ -48,5 +48,12 @@ include_once "TableDataGateway.class.php";
             return "select MessageID, EmployeeID, EmployeeMessages.ContactID, MessageDate, Category, Content, FirstName, LastName 
             from EmployeeMessages INNER JOIN Contacts ON EmployeeMessages.ContactID=Contacts.ContactID";
         }
+         protected function getInsert(){
+             return;
+         }
+   
+         protected function getInsertParams(){
+             return;
+         }
     }
 ?>

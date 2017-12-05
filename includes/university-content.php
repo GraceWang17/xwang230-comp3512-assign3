@@ -79,11 +79,29 @@ function outputTheAddress($row) {
         echo "<span>City: </span>". $row['City'] . "<br>";
         echo "<span>State: </span>". $row['State'] . "<br>";
         echo "<span>Zip: </span>". $row['Zip']. "<br>";
-        echo "<span>Website: </span>". $row['website']. "<br>";
-        echo "<span>Longitude: </span>". $row['Longitude']. "<br>";
-        echo "<span>Latitude: </span>". $row['Latitude']. "<br>";
+        echo "<span>Website: </span>".$row['Website']."<br>";
+        outputGoogleMap($row);
+        // echo "<span>Longitude: </span>". $row['Longitude']. "<br>";
+        // echo "<span>Latitude: </span>". $row['Latitude']. "<br>";
         echo '</p>';
         echo '</div>';
+    }
+    
+    function outputGoogleMap($row) {
+        echo '<div id="map"></div>';
+        echo '<script>
+          function initMap() {
+            var uluru = {lat: '.$row['Latitude'].', lng: ' .$row['Longitude'].'};
+            var map = new google.maps.Map(document.getElementById("map"), {
+              zoom: 13,
+              center: uluru
+            });
+            var marker = new google.maps.Marker({
+              position: uluru,
+              map: map
+            });
+          }
+        </script>';
     }
 ?>
 <main class="mdl-layout__content mdl-color--grey-50">
