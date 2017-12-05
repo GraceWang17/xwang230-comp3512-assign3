@@ -23,6 +23,7 @@
                     <li><a href="https://xwang230-comp3512-assign2-gracewang.c9users.io/phpmyadmin/#PMAURL-0:index.php?db=&table=&server=1&target=&token=0666a61a9e768f6a6b353950d6d415f9"><p><span>phpMyAdmin Database</span></p></a></li>
                     <li><a href="https://github.com/rconnolly/comp3512-f2017-assign1/tree/master/book-images"><p><span>Book-images</span></p></a></li>
                     <li><a href="https://www.google.ca/"><p><span>Google Images</span></p></a></li>
+                    <li><a href="https://github.com/GraceWang17/xwang230-comp3512-assign3/"><p><span>GitHub</span></p></a></li>
                 </ul>
             </div>
         </main>

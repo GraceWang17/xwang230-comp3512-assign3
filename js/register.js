@@ -3,7 +3,7 @@ window.onload = function(){
     changeInputBackground();
     $("#registerForm").submit(function(e){
         //checkEmptyFields(e);
-        //checkEmailPattern(e);
+        checkEmailPattern(e);
         //passwordMatch(e);
         //accessDatabase();
     });
@@ -15,7 +15,7 @@ window.onload = function(){
 function changeInputBackground(){
     var cssSelector = "input[type=text], input[type=password]";
     var fields = document.querySelectorAll(cssSelector);
-    alert(fields.length);
+    //alert(fields.length);
     for (var i = 0; i<fields.length; i++) {
         fields[i].addEventListener("focus", setBackground);
         fields[i].addEventListener("blur", setBackground);
@@ -34,20 +34,19 @@ function changeInputBackground(){
  *  check if any required fields is empty
  */
  function checkEmptyFields(e){
+    //alert(111);
     var errorArea = document.getElementById("errors");
     errorArea.className ="hidden";
     var cssSelector = "form input[class=userRegi],input[class=pwdLog],input[class=email]";
     var fields = document.querySelectorAll(cssSelector);
-    alert(fields.length);
+    //alert(fields.length);
     var fieldList=[];
     for(var i=0;i<fields.length;i++){
         if(fields[i].value == null || fields[i].value == ""){
             e.preventDefault();
             fieldList.push(fields[i]);
-            //e.preventDefault();
         }
     }
-    //e.preventDefault();
     var msg = "The following fields can't be empty: ";
     if(fieldList.length>0){
         for(var i=0;i<fieldList.length;i++){
@@ -58,21 +57,23 @@ function changeInputBackground(){
         errorArea.innerHTML ="<p><b>"+msg+"</b></p>";
         errorArea.className = "visible";
     }
-    //e.preventDefault();
 }
  
 function checkEmailPattern(e){
-    var errorArea = document.getElementById("errors");
-    errorArea.className ="hidden";
+   /* var errorArea = document.getElementById("errors");
+    errorArea.className ="hidden";*/
      var email = $('.email').val();
+     //alert(email);
     if (email != null && email !=""){
-        var pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/";
+        alert(email);
+        var pattern= "r";
         if(!email.match(pattern)){
              email.style.borderColor = "red";
 			 email.style.backgroundColor = "pink";
-			 //e.preventDefault();
-			 errorArea.innerHTML ="<p><b>Your Email is not valid</b></p>";
-             errorArea.className = "visible";
+			 //se.preventDefault();
+			 alert("error");
+			 /*errorArea.innerHTML ="<p><b>Your Email is not valid</b></p>";
+             errorArea.className = "visible";*/
     }
 }
 }

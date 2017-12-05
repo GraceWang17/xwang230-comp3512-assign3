@@ -21,12 +21,12 @@ function getRegisterForm(){
     <br>
     <div>
     <label>Password </label>
-    <input type='password' name='pw' class='pwdLog'id='pw'>
+    <input type='password' name='password' class='pwdLog'id='pw'>
     </div>
     <br>
     <div>
     <label>Retype Password </label>
-    <input type='password' name='pw2' class='pwdLog'>
+    <input type='password' name='secondPassword' class='pwdLog'>
     </div>
     <br>
     <div class='userinfo'>
